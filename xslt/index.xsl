@@ -41,7 +41,7 @@
                                 </p>
                              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                                  <a href="search.html" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Volltextsuche</a>
-                                 <a href="toc.html" type="button" class="btn btn-outline-secondary btn-lg px-4">Zur Korrespondenz</a>
+                                 <a href="toc.html" type="button" class="btn btn-outline-primary btn-lg px-4">Zur Korrespondenz</a>
                              </div>
                           </div>
                           <div class="col-10 col-sm-8 col-lg-6">

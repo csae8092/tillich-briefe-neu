@@ -28,10 +28,20 @@ header {
   --bs-btn-hover-bg: #017fa1;
 }
 
+.btn-outline-primary {
+  --bs-btn-color: var(--dse-base-color);
+  --bs-btn-border-color: var(--dse-base-color);
+  --bs-btn-hover-bg: var(--dse-base-color);
+  --bs-btn-hover-border-color: var(--dse-base-color);
+  --bs-btn-active-bg: var(--dse-base-color);
+  --bs-btn-active-border-color: var(--dse-base-color);
+  --bs-btn-disabled-color: var(--dse-base-color);
+  --bs-btn-disabled-border-color: var(--dse-base-color);
+}
 
 code {
-	font-size: .875em;
-	color: var(--dse-base-color);
+  font-size: 0.875em;
+  color: var(--dse-base-color);
   background-color: aliceblue;
-	word-wrap: break-word;
+  word-wrap: break-word;
 }
