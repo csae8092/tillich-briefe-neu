@@ -35,8 +35,6 @@ header {
   --bs-btn-hover-border-color: var(--dse-base-color);
   --bs-btn-active-bg: var(--dse-base-color);
   --bs-btn-active-border-color: var(--dse-base-color);
-  --bs-btn-disabled-color: var(--dse-base-color);
-  --bs-btn-disabled-border-color: var(--dse-base-color);
 }
 
 code {
