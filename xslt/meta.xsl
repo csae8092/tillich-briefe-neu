@@ -12,7 +12,7 @@
 
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:title[@type='main'][1]/text()"/>
+            <xsl:value-of select=".//tei:titleStmt/tei:title[@level='a']/text()"/>
         </xsl:variable>
         <html class="h-100" lang="de">
             <head>
@@ -24,9 +24,11 @@
             <body class="d-flex flex-column h-100">
             <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0 flex-grow-1">
-                    <div class="container">                        
-                        <h1><xsl:value-of select="$doc_title"/></h1>    
-                        <xsl:apply-templates select=".//tei:body"></xsl:apply-templates>
+                    <div class="container pt-3">                        
+                        <div class="container col-xxl-7">
+                            <h1 class="pt-3 display-4 text-center"><xsl:value-of select="$doc_title"/></h1>
+                            <xsl:apply-templates select=".//tei:body"></xsl:apply-templates>
+                        </div>
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>
@@ -48,5 +50,26 @@
     </xsl:template>
     <xsl:template match="tei:del">
         <del><xsl:apply-templates/></del>
-    </xsl:template>    
+    </xsl:template>
+    <xsl:template match="tei:list">
+        <ul><xsl:apply-templates/></ul>
+    </xsl:template>
+    
+    <xsl:template match="tei:item">
+        <li><xsl:apply-templates/></li>
+    </xsl:template>
+    <xsl:template match="tei:code">
+        <code><xsl:apply-templates/></code>
+    </xsl:template>
+    
+    
+    <xsl:template match="tei:head">
+        <xsl:variable name="level">
+            <xsl:value-of select="count(ancestor-or-self::tei:div)"/>
+        </xsl:variable>
+        <xsl:element name="{concat('h', $level + 1)}">
+            <xsl:attribute name="class" select="'text-center'"/>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
 </xsl:stylesheet>

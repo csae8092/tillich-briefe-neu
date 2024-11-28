@@ -27,3 +27,11 @@ header {
   --bs-btn-bg: var(--dse-base-color);
   --bs-btn-hover-bg: #017fa1;
 }
+
+
+code {
+	font-size: .875em;
+	color: var(--dse-base-color);
+  background-color: aliceblue;
+	word-wrap: break-word;
+}
