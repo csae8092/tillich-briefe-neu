@@ -16,7 +16,7 @@
 
 
     <xsl:template match="/">
-        <xsl:variable name="doc_title" select="'Inhaltsverzeichnis'"/>
+        <xsl:variable name="doc_title" select="'Alle Briefe'"/>
         <html class="h-100" lang="de">
             <head>
                 <xsl:call-template name="html_head">
@@ -28,39 +28,46 @@
             <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0 flex-grow-1">
                     <div class="container">
-                        <h1>Inhaltsverzeichnis</h1>
+                        <h1 class="display-5 pt-3 text-center"><xsl:value-of select="$doc_title"/></h1>
                         <table id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
-                                    <th scope="col" tabulator-headerFilter="input">Titel</th>
-                                    <th scope="col" tabulator-headerFilter="input">Dateinname</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-minWidth="600">Titel</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html">Briefwechsel</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-maxWidth="120">Datum (ISO)</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-maxWidth="170">Art</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-maxWidth="100">ID</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <xsl:for-each
                                     select="collection('../data/editions?select=*.xml')//tei:TEI">
                                     <xsl:variable name="full_path">
-                                        <xsl:value-of select="document-uri(/)"/>
+                                        <xsl:value-of select="@xml:id"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>
                                             <a>
                                                 <xsl:attribute name="href">
-                                                  <xsl:value-of
-                                                  select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
-                                                  />
+                                                    <xsl:value-of
+                                                        select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
+                                                    />
                                                 </xsl:attribute>
-                                                <i class="bi bi-link-45deg"/>
+                                            <xsl:value-of
+                                                select=".//tei:titleStmt/tei:title[1]/text()"/>
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                            <xsl:value-of select="tokenize(.//tei:ref[@type='belongsToCorrespondence'][1]/text(), 'Korrespondenz mit ')[last()]"/>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="tokenize($full_path, '/')[last()]"
-                                            />
+                                            <xsl:value-of select="descendant::tei:correspAction[@type='sent']/tei:date/@when"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="descendant::tei:physDesc"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="@xml:id"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>
