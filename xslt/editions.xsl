@@ -143,7 +143,8 @@
                                 <xsl:if test=".//tei:back//tei:biblStruct[@xml:id]">
                                     <div>
                                         <h3 class="fs-4 p-1">Literatur</h3>
-                                        <ul>
+                                        
+                                        <div class="ps-4">
                                             <xsl:for-each
                                                 select=".//tei:back//tei:biblStruct[@xml:id]">
                                                 <div class="form-check">
@@ -154,13 +155,13 @@
                                                     </label>
                                                 </div>
                                             </xsl:for-each>
-                                        </ul>
+                                        </div>
                                     </div>
                                 </xsl:if>
                                 <xsl:if test=".//tei:list[@xml:id = 'mentioned_letters']">
                                     <div>
                                         <h3 class="fs-4 p-1">Briefe</h3>
-                                        <ul>
+                                        <div class="ps-4">
                                             <xsl:for-each
                                                 select=".//tei:list[@xml:id = 'mentioned_letters']//tei:item[@xml:id]">
                                                 <div class="form-check">
@@ -171,7 +172,7 @@
                                                     </label>
                                                 </div>
                                             </xsl:for-each>
-                                        </ul>
+                                        </div>
                                     </div>
                                 </xsl:if>
                             </div>
@@ -211,6 +212,9 @@
             </body>
 
         </html>
+    </xsl:template>
+    <xsl:template match="tei:rs[@ref]">
+        <span data-entid="{tokenize(@ref, '#')[last()]}"><xsl:apply-templates/></span>
     </xsl:template>
     <xsl:template match="tei:pb">
         <xsl:element name="span">
