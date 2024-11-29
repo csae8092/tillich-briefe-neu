@@ -3,7 +3,7 @@ name: Build and publish
 on:
   workflow_dispatch:
   schedule:
-  - cron: "49 4 * * *"
+  - cron: "22 3 * * *"
 
 permissions:
   contents: read
@@ -43,8 +43,8 @@ jobs:
       run: ./fetch_data.sh
     - name: Process Data
       run: ./process.sh
-    - name: Fulltext Index
-      run: python3 make_ts_index.py
+    # - name: Fulltext Index
+    #   run: python3 make_ts_index.py
     - name: Build
       run: ant
     - name: Make PDF

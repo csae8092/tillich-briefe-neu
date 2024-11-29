@@ -27,47 +27,69 @@
             <body class="d-flex flex-column h-100">
             <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0 flex-grow-1">
+
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ps-5 p-3">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Tillich-Briefe</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Alle Briefe</li>
+                        </ol>
+                    </nav>
+                    
                     <div class="container">
-                        <h1 class="display-5 pt-3 text-center"><xsl:value-of select="$doc_title"/></h1>
+                        <h1 class="display-5 text-center"><xsl:value-of select="$doc_title"/></h1>
+                        <div class="text-center p-1"><span id="counter1"></span> von <span id="counter2"></span> Briefen</div>
                         <table id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-minWidth="600">Titel</th>
-                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html">Briefwechsel</th>
-                                    <th scope="col" tabulator-headerFilter="input" tabulator-maxWidth="120">Datum (ISO)</th>
-                                    <th scope="col" tabulator-headerFilter="input" tabulator-maxWidth="170">Art</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html" tabulator-download="false" tabulator-minWidth="350">Sender</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-visible="false" tabulator-download="true">sender_</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html">Empfänger</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-maxWidth="130">Datum</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html">von</th>
+                                    <th scope="col" tabulator-headerFilter="input" tabulator-formatter="html">nach</th>
+                                    <th scope="col" tabulator-headerFilter="input" >Art</th>
                                     <th scope="col" tabulator-headerFilter="input" tabulator-maxWidth="100">ID</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <xsl:for-each
                                     select="collection('../data/editions?select=*.xml')//tei:TEI">
-                                    <xsl:variable name="full_path">
-                                        <xsl:value-of select="@xml:id"/>
+                                    <xsl:variable name="docId">
+                                        <xsl:value-of select="replace(@xml:id, '.xml', '')"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>
-                                            <a>
-                                                <xsl:attribute name="href">
-                                                    <xsl:value-of
-                                                        select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
-                                                    />
-                                                </xsl:attribute>
-                                            <xsl:value-of
-                                                select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                            <a href="{$docId || '.html'}">
+                                                <xsl:value-of select="string-join(.//tei:correspAction[@type='sent']/tei:persName/text(), ', ')"/>
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="tokenize(.//tei:ref[@type='belongsToCorrespondence'][1]/text(), 'Korrespondenz mit ')[last()]"/>
+                                            <xsl:value-of select="string-join(.//tei:correspAction[@type='sent']/tei:persName/text(), ', ')"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="string-join(.//tei:correspAction[@type='received']/tei:persName/text(), ', ')"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="descendant::tei:correspAction[@type='sent']/tei:date/@when"/>
+                                            <xsl:value-of select="descendant::tei:correspAction[@type='sent']/tei:date/@notBefore"/>
+                                            <xsl:value-of select="descendant::tei:correspAction[@type='sent']/tei:date/@from"/>
+                                            <xsl:if test="descendant::tei:correspAction[@type='sent']/tei:date/@notAfter and not(descendant::tei:correspAction[@type='sent']/tei:date/@notBefore)">
+                                                <xsl:value-of select="descendant::tei:correspAction[@type='sent']/tei:date/@notAfter"/>
+                                            </xsl:if>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="string-join(.//tei:correspAction[@type='sent']/tei:placeName/text(), ', ')"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="string-join(.//tei:correspAction[@type='received']/tei:placeName/text(), ', ')"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="descendant::tei:physDesc"/>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="@xml:id"/>
+                                            <xsl:value-of select="$docId"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>
@@ -78,6 +100,25 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <xsl:call-template name="tabulator_js"/>
+                <script>
+                    table.on("rowClick", function(e, row){
+                    var data = row.getData();
+                    var url = `${data["id"]}.html`;
+                    window.open(url, "_self");
+                    });
+                    
+                    table.on("dataLoaded", function (data) {
+                    var el = document.getElementById("counter1");
+                    el.innerHTML = `${data.length}`;
+                    var el = document.getElementById("counter2");
+                    el.innerHTML = `${data.length}`;
+                    });
+                    
+                    table.on("dataFiltered", function (filters, data) {
+                    var el = document.getElementById("counter1");
+                    el.innerHTML = `${data.length}`;
+                    }); 
+                </script>
             </body>
         </html>
     </xsl:template>
