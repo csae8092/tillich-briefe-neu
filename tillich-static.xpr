@@ -10,20 +10,23 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>data/editions/L00006.xml</String>
+                                    <String>data/imprint.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>editions</String>
+                                        <String>toc</String>
+                                        <String>index</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XSL</String>
+                                        <String>XSL</String>
                                     </list>
                                 </field>
                                 <field name="scenarioStorageLocations">
                                     <list>
+                                        <Byte>2</Byte>
                                         <Byte>2</Byte>
                                     </list>
                                 </field>
@@ -50,7 +53,7 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>data/editions/L00042.xml</String>
+                                    <String>data/editions/L00006.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -70,11 +73,11 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>data/imprint.xml</String>
+                                    <String>data/editions/L00042.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>toc</String>
+                                        <String>editions</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
