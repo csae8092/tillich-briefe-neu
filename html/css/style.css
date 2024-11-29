@@ -43,3 +43,10 @@ code {
   background-color: aliceblue;
   word-wrap: break-word;
 }
+
+.pagebreak {
+	position: relative;
+	bottom: -0.2em;
+	font-weight: bold;
+	color: var(--dse-base-color);
+}
