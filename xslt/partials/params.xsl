@@ -6,7 +6,7 @@
     <xsl:param name="project_title">Tillich Koorespondenz</xsl:param>
     <xsl:param name="redmine_id">22113</xsl:param>
     <xsl:param name="project_short_title">tillich-static</xsl:param>
-    <xsl:param name="github_url">tillich-briefe-stati</xsl:param>
+    <xsl:param name="github_url">tillich-briefe-static</xsl:param>
     <xsl:param name="html_title">tillich-static</xsl:param>
     <xsl:param name="project_logo">images/logo.png</xsl:param>
     <xsl:param name="base_url">https://tillich-brriefe.acdh.oeaw.ac.at</xsl:param>
