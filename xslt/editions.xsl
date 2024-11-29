@@ -6,10 +6,11 @@
         omit-xml-declaration="yes"/>
 
     <xsl:import href="./partials/shared.xsl"/>
+    <xsl:import href="./partials/entities.xsl"/>
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
-    <xsl:import href="./partials/aot-options.xsl"/>
+
 
     <xsl:variable name="prev">
         <xsl:value-of select="replace(tokenize(data(tei:TEI/@prev), '/')[last()], '.xml', '.html')"
@@ -147,8 +148,8 @@
                                             <xsl:for-each select=".//tei:back//tei:person[@xml:id]">
                                                 <div class="form-check">
                                                   <input class="form-check-input" type="checkbox"
-                                                  value="{@xml:id}" id="{@xml:id}"/>
-                                                  <label class="form-check-label" for="{@xml:id}">
+                                                  value="{@xml:id}" id="check-{@xml:id}"/>
+                                                  <label class="form-check-label" for="check-{@xml:id}">
                                                   <xsl:value-of select="./tei:persName[1]/text()"/>
                                                   </label>
                                                 </div>
@@ -164,8 +165,8 @@
                                             <xsl:for-each select=".//tei:back//tei:place[@xml:id]">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
-                                                        value="{@xml:id}" id="{@xml:id}"/>
-                                                    <label class="form-check-label" for="{@xml:id}">
+                                                        value="{@xml:id}" id="check-{@xml:id}"/>
+                                                    <label class="form-check-label" for="check-{@xml:id}">
                                                         <xsl:value-of select="./tei:placeName[1]/text()"/>
                                                     </label>
                                                 </div>
@@ -182,8 +183,8 @@
                                                 select=".//tei:back//tei:biblStruct[@xml:id]">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
-                                                        value="{@xml:id}" id="{@xml:id}"/>
-                                                    <label class="form-check-label" for="{@xml:id}">
+                                                        value="{@xml:id}" id="check-{@xml:id}"/>
+                                                    <label class="form-check-label" for="check-{@xml:id}">
                                                         <xsl:value-of select="./@n"/>
                                                     </label>
                                                 </div>
@@ -199,8 +200,8 @@
                                                 select=".//tei:list[@xml:id = 'mentioned_letters']//tei:item[@xml:id]">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
-                                                        value="{@xml:id}" id="{@xml:id}"/>
-                                                    <label class="form-check-label" for="{@xml:id}">
+                                                        value="{@xml:id}" id="check-{@xml:id}"/>
+                                                    <label class="form-check-label" for="check-{@xml:id}">
                                                         <xsl:value-of select="./text()"/>
                                                     </label>
                                                 </div>
@@ -211,6 +212,11 @@
                             </div>
                         </div>
                     </div>
+                    <xsl:for-each select="//tei:back">
+                        <div class="tei-back">
+                            <xsl:apply-templates/>
+                        </div>
+                    </xsl:for-each>
                     
                 </main>
                 <xsl:call-template name="html_footer"/>
