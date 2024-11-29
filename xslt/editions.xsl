@@ -100,11 +100,44 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
-                                <h2 class="visually-hidden">Der editierte Text</h2>
-                                <xsl:apply-templates select=".//tei:body"/>
+                            <div class="col-lg-6">
+                                <div>
+                                    <h2 class="visually-hidden">Der editierte Text</h2>
+                                    <xsl:apply-templates select=".//tei:body"/>
+                                </div>
+                                <hr/>
+                                <div class="pt-3">
+                                    <h2 class="visually-hidden">Fußnoten, Anmerkungen</h2>
+                                    <div class="ps-5 pe-5">
+                                        <xsl:for-each select=".//tei:note[not(./tei:p)]">
+                                            <div class="footnotes" id="{local:makeId(.)}">
+                                                <xsl:element name="a">
+                                                    <xsl:attribute name="name">
+                                                        <xsl:text>fn</xsl:text>
+                                                        <xsl:number level="any" format="1" count="tei:note"
+                                                        />
+                                                    </xsl:attribute>
+                                                    <a>
+                                                        <xsl:attribute name="href">
+                                                            <xsl:text>#fna_</xsl:text>
+                                                            <xsl:number level="any" format="1"
+                                                                count="tei:note"/>
+                                                        </xsl:attribute>
+                                                        <span
+                                                            style="font-size:7pt;vertical-align:super; margin-right: 0.4em">
+                                                            <xsl:number level="any" format="1"
+                                                                count="tei:note"/>
+                                                        </span>
+                                                    </a>
+                                                </xsl:element>
+                                                <xsl:apply-templates/>
+                                            </div>
+                                        </xsl:for-each>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 ps-2">
+                            <div class="col-lg-1"/>
+                            <div class="col-lg-5">
                                 <h2 class="visually-hidden">Entitäten</h2>
                                 <xsl:if test=".//tei:back//tei:person[@xml:id]">
                                     <div>
@@ -177,44 +210,13 @@
                                 </xsl:if>
                             </div>
                         </div>
-                        <div>
-                            <h2 class="visually-hidden">Fußnoten, Anmerkungen</h2>
-                            <p>
-                                <xsl:for-each select=".//tei:note[not(./tei:p)]">
-                                    <div class="footnotes" id="{local:makeId(.)}">
-                                        <xsl:element name="a">
-                                            <xsl:attribute name="name">
-                                                <xsl:text>fn</xsl:text>
-                                                <xsl:number level="any" format="1" count="tei:note"
-                                                />
-                                            </xsl:attribute>
-                                            <a>
-                                                <xsl:attribute name="href">
-                                                  <xsl:text>#fna_</xsl:text>
-                                                  <xsl:number level="any" format="1"
-                                                  count="tei:note"/>
-                                                </xsl:attribute>
-                                                <span
-                                                  style="font-size:7pt;vertical-align:super; margin-right: 0.4em">
-                                                  <xsl:number level="any" format="1"
-                                                  count="tei:note"/>
-                                                </span>
-                                            </a>
-                                        </xsl:element>
-                                        <xsl:apply-templates/>
-                                    </div>
-                                </xsl:for-each>
-                            </p>
-                        </div>
                     </div>
+                    
                 </main>
                 <xsl:call-template name="html_footer"/>
             </body>
 
         </html>
-    </xsl:template>
-    <xsl:template match="tei:rs[@ref]">
-        <span data-entid="{tokenize(@ref, '#')[last()]}"><xsl:apply-templates/></span>
     </xsl:template>
     <xsl:template match="tei:pb">
         <xsl:element name="span">
