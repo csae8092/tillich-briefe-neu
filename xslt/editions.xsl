@@ -110,7 +110,7 @@
                                 <div class="pt-3">
                                     <h2 class="visually-hidden">Fußnoten, Anmerkungen</h2>
                                     <div class="ps-5 pe-5">
-                                        <xsl:for-each select=".//tei:note[not(./tei:p)]">
+                                        <xsl:for-each select=".//tei:note[@type='ea']">
                                             <div class="footnotes" id="{local:makeId(.)}">
                                                 <xsl:element name="a">
                                                     <xsl:attribute name="name">
@@ -148,6 +148,7 @@
                                             <xsl:for-each select=".//tei:back//tei:person[@xml:id]">
                                                 <div class="form-check">
                                                   <input class="form-check-input" type="checkbox"
+                                                  onchange="toggleHighlight(this)"
                                                   value="{@xml:id}" id="check-{@xml:id}"/>
                                                   <label class="form-check-label" for="check-{@xml:id}">
                                                   <xsl:value-of select="./tei:persName[1]/text()"/>
@@ -165,6 +166,7 @@
                                             <xsl:for-each select=".//tei:back//tei:place[@xml:id]">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
+                                                        onchange="toggleHighlight(this)"
                                                         value="{@xml:id}" id="check-{@xml:id}"/>
                                                     <label class="form-check-label" for="check-{@xml:id}">
                                                         <xsl:value-of select="./tei:placeName[1]/text()"/>
@@ -183,6 +185,7 @@
                                                 select=".//tei:back//tei:biblStruct[@xml:id]">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
+                                                        onchange="toggleHighlight(this)"
                                                         value="{@xml:id}" id="check-{@xml:id}"/>
                                                     <label class="form-check-label" for="check-{@xml:id}">
                                                         <xsl:value-of select="./@n"/>
@@ -200,6 +203,7 @@
                                                 select=".//tei:list[@xml:id = 'mentioned_letters']//tei:item[@xml:id]">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
+                                                        onchange="toggleHighlight(this)"
                                                         value="{@xml:id}" id="check-{@xml:id}"/>
                                                     <label class="form-check-label" for="check-{@xml:id}">
                                                         <xsl:value-of select="./text()"/>
@@ -220,6 +224,7 @@
                     
                 </main>
                 <xsl:call-template name="html_footer"/>
+                <script src="js/main.js"></script>
             </body>
 
         </html>
@@ -243,4 +248,6 @@
             <xsl:apply-templates/>
         </div>
     </xsl:template>
+    
+    <xsl:template match="tei:list/tei:head"/>
 </xsl:stylesheet>

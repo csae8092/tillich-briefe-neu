@@ -51,6 +51,7 @@ code {
 	color: var(--dse-base-color);
 }
 
+
 button.entity {
   background: none;
   border: none;
@@ -58,5 +59,13 @@ button.entity {
   margin: 0;
   font: inherit;
   color: inherit;
+  text-align: inherit;
   cursor: pointer;
+}
+
+button.highlight {
+  background-color: var(--dse-base-color);
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
 }

@@ -3,10 +3,51 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0"
     version="2.0" exclude-result-prefixes="xsl tei xs">
     <xsl:import href="./person.xsl"/>
-    <xsl:import href="org.xsl"/>
+    <xsl:import href="./org.xsl"/>
+    
+    <xsl:template match="tei:rs[starts-with(@ref, '#') and @type]">
+        <xsl:variable name="entType" select="@type"/>
+        <button class="{$entType} entity" data-bs-toggle="modal" data-bs-target="{@ref}">
+            <xsl:apply-templates/>
+        </button>
+    </xsl:template>
     
     <xsl:template match="tei:listPerson">
         <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="tei:listPlace">
+        <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="tei:listOrg">
+        <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="tei:list[@xml='mentioned']">
+        <xsl:apply-templates select=".//tei:item"/>
+    </xsl:template>
+    
+    <xsl:template match="tei:item[@xml:id]">
+        <xsl:variable name="selfLink">
+            <xsl:value-of select="concat(data(@xml:id), '.html')"/>
+        </xsl:variable>
+        <xsl:variable name="label">
+            <xsl:value-of select="./text()"/>
+        </xsl:variable>
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="$label"/></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <a href="{$selfLink}"><xsl:value-of select="$label"/></a> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </xsl:template>
 
     
@@ -17,7 +58,7 @@
         <xsl:variable name="label">
             <xsl:value-of select="./tei:persName[1]/text()"/>
         </xsl:variable>
-        <div class="modal modal-lg fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -35,6 +76,31 @@
         </div>
     </xsl:template>
     
+    <xsl:template match="tei:place">
+        <xsl:variable name="selfLink">
+            <xsl:value-of select="concat(data(@xml:id), '.html')"/>
+        </xsl:variable>
+        <xsl:variable name="label">
+            <xsl:value-of select="./tei:placeName[1]"/>
+        </xsl:variable>
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="$label"/></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <xsl:call-template name="org_detail"/> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </xsl:template>
+    
     <xsl:template match="tei:org">
         <xsl:variable name="selfLink">
             <xsl:value-of select="concat(data(@xml:id), '.html')"/>
@@ -42,7 +108,7 @@
         <xsl:variable name="label">
             <xsl:value-of select="./tei:orgName[1]"/>
         </xsl:variable>
-        <div class="modal modal-lg fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
