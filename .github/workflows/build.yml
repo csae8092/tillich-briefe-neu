@@ -47,8 +47,6 @@ jobs:
     #   run: python3 make_ts_index.py
     - name: Build
       run: ant
-    - name: Make PDF
-      run: ./make_pdf.sh
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
