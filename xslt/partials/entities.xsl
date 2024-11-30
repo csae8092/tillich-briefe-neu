@@ -58,11 +58,13 @@
         <xsl:variable name="label">
             <xsl:value-of select="./tei:persName[1]/text()"/>
         </xsl:variable>
-        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-label="{$label}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="$label"/></h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                            <a href="{$selfLink}"><xsl:value-of select="$label"/></a>
+                        </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -83,11 +85,13 @@
         <xsl:variable name="label">
             <xsl:value-of select="./tei:placeName[1]"/>
         </xsl:variable>
-        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-label="{$label}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="$label"/></h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                            <a href="{$selfLink}"><xsl:value-of select="$label"/></a>
+                        </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -108,11 +112,13 @@
         <xsl:variable name="label">
             <xsl:value-of select="./tei:orgName[1]"/>
         </xsl:variable>
-        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-label="{$label}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="$label"/></h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                            <a href="{$selfLink}"><xsl:value-of select="$label"/></a>
+                        </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

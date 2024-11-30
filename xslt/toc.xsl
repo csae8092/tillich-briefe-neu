@@ -100,25 +100,6 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <xsl:call-template name="tabulator_js"/>
-                <script>
-                    table.on("rowClick", function(e, row){
-                    var data = row.getData();
-                    var url = `${data["id"]}.html`;
-                    window.open(url, "_self");
-                    });
-                    
-                    table.on("dataLoaded", function (data) {
-                    var el = document.getElementById("counter1");
-                    el.innerHTML = `${data.length}`;
-                    var el = document.getElementById("counter2");
-                    el.innerHTML = `${data.length}`;
-                    });
-                    
-                    table.on("dataFiltered", function (filters, data) {
-                    var el = document.getElementById("counter1");
-                    el.innerHTML = `${data.length}`;
-                    }); 
-                </script>
             </body>
         </html>
     </xsl:template>
