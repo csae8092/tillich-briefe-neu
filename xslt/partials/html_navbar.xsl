@@ -50,9 +50,6 @@
                                         <a class="dropdown-item" href="listplace.html">Orte</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listorg.html">Organisationen</a>
-                                    </li>
-                                    <li>
                                         <a class="dropdown-item" href="listbibl.html">Werke</a>
                                     </li>
                                 </ul>

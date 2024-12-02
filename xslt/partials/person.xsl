@@ -57,9 +57,9 @@
             </xsl:if>
             <xsl:if test=".//tei:note[@type='bio']">
                 <dt>Kurzbiographie</dt>
-                <xsl:for-each select=".//tei:occupation">
+                <xsl:for-each select=".//tei:note[@type='bio']">
                     <dd>
-                        <xsl:value-of select="./text()"/>
+                        <xsl:value-of select=".//text()"/>
                     </dd>
                 </xsl:for-each>
             </xsl:if>

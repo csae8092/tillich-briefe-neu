@@ -49,6 +49,43 @@
             </div>
         </div>
     </xsl:template>
+    
+    <xsl:template match="tei:biblStruct[@xml:id]">
+        <xsl:variable name="selfLink">
+            <xsl:value-of select="concat(data(@xml:id), '.html')"/>
+        </xsl:variable>
+        <xsl:variable name="label">
+            <xsl:value-of select="@n"/>
+        </xsl:variable>
+        <div class="modal modal fade" id="{@xml:id}" data-bs-keyboard="true" tabindex="-1" aria-labelledby="{$label}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header visually-hidden">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"><xsl:value-of select="$label"/></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>Kurzzitat</dt>
+                            <dd><a href="{$selfLink}"><xsl:value-of select="$label"/></a></dd>
+                            
+                            <dt>Volle Bibliographische Angabe</dt>
+                            <dd><a>
+                                    <xsl:attribute name="href">
+                                        <xsl:value-of select="@corresp"/>
+                                    </xsl:attribute>
+                                    Zotero
+                            </a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </xsl:template>
 
     
     <xsl:template match="tei:person">
