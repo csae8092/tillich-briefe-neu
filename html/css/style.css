@@ -74,9 +74,13 @@ dd {
 }
 
 .footerlogo {
-  height: 95px;
+  height: 60px;
 }
 footer {
   border-top: solid;
   border-color: var(--dse-base-color);
+}
+
+main {
+  min-height: 800px;
 }

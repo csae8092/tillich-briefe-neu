@@ -10,7 +10,7 @@
             
             <div class="container text-center">
                 <div class="pb-2">
-                    <span class="fs-4">Kontakt</span>
+                    <span class="fs-5">Kontakt</span>
                 </div>
                 <div class="row justify-content-md-center">
                     <div class="col col-lg-4">
@@ -47,25 +47,23 @@
                     </div>
                 </div>
                 <div class="pb-2 pt-2">
-                    <span class="fs-4">Förderinstitutionen</span>
+                    <span class="fs-5">Förderinstitutionen</span>
                 </div>
                 <div class="row justify-content-md-center">
-                    <div class="col col-lg-3"></div>
+                    
                     <div class="col col-lg-3">
+                        <img src="./images/fwf-logo.svg" alt="FWF Logo" class="footerlogo"/>
                         <div class="text-center p-3">
-                            
-                            <br />
-                            Gefördert aus Mitteln des Wissenschaftsfonds FWF, I 4857-G
+                            Gefördert aus Mitteln Wissenschaftsfonds FWF, <a href="https://www.fwf.ac.at/forschungsradar/10.55776/PIN5470423">10.55776/PIN5470423</a> und <a href="https://www.fwf.ac.at/forschungsradar/10.55776/I4857">10.55776/I4857</a>
                         </div>
                     </div>
                     <div class="col col-lg-3">
+                        <img src="./images/dfg-logo.png" alt="DFG Logo" class="footerlogo"/>
                         <div class="text-center p-3">
-                            
-                            <br />
-                            Gefördert aus Mitteln der Deutschen Forschungsgemeinschaft DFG, Projektnummer 444828611
+                            Gefördert aus Mitteln der Deutschen Forschungsgemeinschaft DFG, <a href="https://gepris-extern.dfg.de/gepris/projekt/444828611">Projektnummer 444828611</a>
                         </div>
                     </div>
-                    <div class="col col-lg-3"></div>
+                    
                 </div>
             </div>
             
