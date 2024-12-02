@@ -15,31 +15,37 @@
                 <div class="row justify-content-md-center">
                     <div class="col col-lg-4">
                         <div>
-                            <img class="footerlogo" src="./images/acdh-ch-logo-with-text.svg" alt="ACDH-CH Logo"/>
+                            <a href="https://www.oeaw.ac.at/acdh/acdh-ch-home">
+                                <img class="footerlogo" src="./images/acdh-ch-logo-with-text.svg" alt="ACDH-CH"/>
+                            </a>
                         </div>
                         <div class="text-center p-4">
-                            <a href="https://www.oeaw.ac.at/acdh/acdh-ch-home">ACDH-CH Austrian Centre for Digital Humanities and Cultural Heritage Österreichische
-                                Akademie der Wissenschaften</a>
+                            ACDH-CH Austrian Centre for Digital Humanities and Cultural Heritage Österreichische
+                                Akademie der Wissenschaften
                             <br />
                             <a href="mailto:acdh-ch-helpdesk@oeaw.ac.at">acdh-ch-helpdesk@oeaw.ac.at</a>
                         </div>
                     </div>
                     <div class="col col-lg-4">
                         <div>
-                            <img class="footerlogo" src="./images/uni-wien-logo.png" alt="Univeristät Wien Logo"/>
+                            <a href="https://etf.univie.ac.at/">
+                                <img class="footerlogo" src="./images/uni-wien-logo.png" alt="Univeristät Wien, Institut für Systematische Theologie und Religionswissenschaft"/>
+                            </a>
                         </div>
                         <div class="text-center p-4">
-                            <a href="https://etf.univie.ac.at/">Evangelisch-Theologische Fakultät der Universität Wien, Institut für Systematische Theologie und Religionswissenschaft</a>
+                            Evangelisch-Theologische Fakultät der Universität Wien, Institut für Systematische Theologie und Religionswissenschaft
                             <br />
                             <a href="mailto:christian.danz@univie.ac.at">christian.danz@univie.ac.at</a>
                         </div>
                     </div>
                     <div class="col col-lg-4">
                         <div>
-                            <img class="footerlogo" src="./images/uni-munic-logo.png" alt="Univeristät München Logo"/>
+                            <a href="https://www.evtheol.lmu.de/de/die-fakultaet/lehrstuehle/lehrstuhl-systematische-theologie-i/">
+                                <img class="footerlogo" src="./images/uni-munic-logo.png" alt="Univeristät München, Systematische Theologie"/>
+                            </a>
                         </div>
                         <div class="text-center p-4">
-                            <a href="https://www.evtheol.lmu.de/de/die-fakultaet/lehrstuehle/lehrstuhl-systematische-theologie-i/">Evangelisch-Theologische Fakultät der Ludwig-Maximilians-Universität München, Abteilung für Systematische Theologie</a>
+                            Evangelisch-Theologische Fakultät der Ludwig-Maximilians-Universität München, Abteilung für Systematische Theologie
                             <br />
                             <a href="mailto:FriedrichW.Graf@evtheol.uni-muenchen.de">FriedrichW.Graf@evtheol.uni-muenchen.de</a>
                             
@@ -54,13 +60,13 @@
                     <div class="col col-lg-3">
                         <img src="./images/fwf-logo.svg" alt="FWF Logo" class="footerlogo"/>
                         <div class="text-center p-3">
-                            Gefördert aus Mitteln Wissenschaftsfonds FWF, <a href="https://www.fwf.ac.at/forschungsradar/10.55776/PIN5470423">10.55776/PIN5470423</a> und <a href="https://www.fwf.ac.at/forschungsradar/10.55776/I4857">10.55776/I4857</a>
+                            Gefördert aus Mitteln Wissenschaftsfonds FWF, <a href="https://www.fwf.ac.at/forschungsradar/10.55776/PIN5470423" class="dse-dotted">10.55776/PIN5470423</a> und <a href="https://www.fwf.ac.at/forschungsradar/10.55776/I4857" class="dse-dotted">10.55776/I4857</a>
                         </div>
                     </div>
                     <div class="col col-lg-3">
                         <img src="./images/dfg-logo.png" alt="DFG Logo" class="footerlogo"/>
                         <div class="text-center p-3">
-                            Gefördert aus Mitteln der Deutschen Forschungsgemeinschaft DFG, <a href="https://gepris-extern.dfg.de/gepris/projekt/444828611">Projektnummer 444828611</a>
+                            Gefördert aus Mitteln der Deutschen Forschungsgemeinschaft DFG, <a href="https://gepris-extern.dfg.de/gepris/projekt/444828611" class="dse-dotted">Projektnummer 444828611</a>
                         </div>
                     </div>
                     

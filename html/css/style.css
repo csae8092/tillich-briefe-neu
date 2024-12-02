@@ -84,3 +84,8 @@ footer {
 main {
   min-height: 800px;
 }
+footer a {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: var(--dse-base-color);
+}
