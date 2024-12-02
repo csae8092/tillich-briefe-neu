@@ -45,12 +45,11 @@ code {
 }
 
 .pagebreak {
-	position: relative;
-	bottom: -0.2em;
-	font-weight: bold;
-	color: var(--dse-base-color);
+  position: relative;
+  bottom: -0.2em;
+  font-weight: bold;
+  color: var(--dse-base-color);
 }
-
 
 button.entity {
   background: none;
@@ -72,4 +71,12 @@ button.highlight {
 
 dd {
   margin-left: 1rem;
+}
+
+.footerlogo {
+  height: 95px;
+}
+footer {
+  border-top: solid;
+  border-color: var(--dse-base-color);
 }
