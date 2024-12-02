@@ -34,7 +34,7 @@
                             <li class="breadcrumb-item">
                                 <a href="index.html">Tillich-Briefe</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Personenregister</li>
+                            <li class="breadcrumb-item active" aria-current="page"><xsl:value-of select="$doc_title"/></li>
                         </ol>
                     </nav>
                     <div class="container">

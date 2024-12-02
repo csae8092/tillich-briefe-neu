@@ -55,6 +55,14 @@
                     </dd>
                 </xsl:for-each>
             </xsl:if>
+            <xsl:if test=".//tei:note[@type='bio']">
+                <dt>Kurzbiographie</dt>
+                <xsl:for-each select=".//tei:occupation">
+                    <dd>
+                        <xsl:value-of select="./text()"/>
+                    </dd>
+                </xsl:for-each>
+            </xsl:if>
             
             <xsl:if test=".//tei:affiliation">
                 <dt>steht in Verbindung zu</dt>
@@ -65,9 +73,9 @@
                     </dd>
                 </xsl:for-each>
             </xsl:if>
-            <xsl:if test="./tei:idno[@type = 'URL']">
-                <dt>links</dt>
-                <xsl:for-each select="./tei:idno[@type = 'URL']">
+            <xsl:if test="./tei:idno">
+                <dt>Normdaten</dt>
+                <xsl:for-each select=".//tei:idno[starts-with(./text(), 'http')]">
                     <dd>
                         <a>
                             <xsl:attribute name="href">

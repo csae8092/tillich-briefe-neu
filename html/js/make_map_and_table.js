@@ -21,6 +21,7 @@ function fetch_tabulatordata_and_build_table(
           map_cfg.on_row_click_zoom,
           markers
         );
+        return table;
       })
       .catch(function (err) {
         console.log(err);
@@ -33,7 +34,9 @@ function fetch_tabulatordata_and_build_table(
       map_cfg.on_row_click_zoom,
       markers
     );
+    return table;
   }
+  
 }
 
 function zoom_to_point_from_row_data(
@@ -162,5 +165,6 @@ function build_map_and_table(map_cfg, table_cfg, wms_cfg = null, tms_cfg = null)
   L.control.layers(null, overlay_control).addTo(map);
   markers.addTo(map);
 
-  fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, markers);
+  let table = fetch_tabulatordata_and_build_table(map_cfg, map, table_cfg, markers);
+  return table
 }
