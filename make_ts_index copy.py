@@ -10,7 +10,6 @@ from acdh_tei_pyutils.utils import (
     make_entity_label,
     check_for_hash,
 )
-from acdh_xml_pyutils.xml import NSMAP
 from tqdm import tqdm
 
 

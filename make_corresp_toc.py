@@ -58,21 +58,21 @@ tei_dummy = """
       </body>
    </text>
 </TEI>
-"""
+"""  # noqa:
 
 doc = TeiReader(tei_dummy)
 body = doc.any_xpath(".//tei:body")[0]
 
 
 for corresp_id, ndf in df.groupby("corresp_id"):
-    my_list = ET.SubElement(body, "list")
-    my_list.attrib["{http://www.w3.org/XML/1998/namespace}id"] = corresp_id[1:]
-    ET.SubElement(my_list, "head").text = f'{ndf.iloc[0]["corresp_names"]}'
-    for i, row in ndf.iterrows():
-        item = ET.SubElement(my_list, "item")
-        title = ET.SubElement(item, "title").text = row["title"]
-        date = ET.SubElement(item, "date").text = row["date"]
-        ptr = ET.SubElement(item, "ptr")
-        ptr.attrib["target"] = f'{row["id"].split("/")[-1]}'
+   my_list = ET.SubElement(body, "list")
+   my_list.attrib["{http://www.w3.org/XML/1998/namespace}id"] = corresp_id[1:]
+   ET.SubElement(my_list, "head").text = f'{ndf.iloc[0]["corresp_names"]}'
+   for i, row in ndf.iterrows():
+      item = ET.SubElement(my_list, "item")
+      title = ET.SubElement(item, "title").text = row["title"]
+      date = ET.SubElement(item, "date").text = row["date"]
+      ptr = ET.SubElement(item, "ptr")
+      ptr.attrib["target"] = f'{row["id"].split("/")[-1]}'
 
 doc.tree_to_file("./data/indices/corresp_toc.xml")
