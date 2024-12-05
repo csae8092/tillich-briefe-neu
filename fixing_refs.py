@@ -12,6 +12,8 @@ for x in files:
     except Exception as e:
         print(e)
         continue
+    for y in doc.any_xpath(".//*[@ref='']"):
+        y.attrib.pop("ref")
     for y in doc.any_xpath(".//tei:rs[@ref and @type]"):
         ref = y.attrib["ref"]
         type = y.attrib["type"]
@@ -24,4 +26,6 @@ for x in files:
             y.attrib["ref"] = check_for_hash(ref)
         else:
             y.attrib["ref"] = f"#{check_for_hash(ref)}"
+    for y in doc.any_xpath(".//tei:rs[@resp and @type='bible']"):
+        y.attrib["ref"] = y.attrib.pop("resp")
     doc.tree_to_file(x)
