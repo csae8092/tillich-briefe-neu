@@ -34,4 +34,5 @@ echo "</div>" >> ${IMPRINT_XML}
 echo "</root>" >> ${IMPRINT_XML}
 
 python check_files.py
+python fixing_refs.py
 python remove_lb_from_title.py
