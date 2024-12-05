@@ -69,6 +69,14 @@ button.highlight {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+
+.highlight {
+  background-color: var(--dse-base-color);
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
 dd {
   margin-left: 1rem;
 }

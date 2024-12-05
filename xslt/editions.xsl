@@ -195,6 +195,27 @@
                                         </div>
                                     </div>
                                 </xsl:if>
+                                <xsl:if test=".//tei:rs[@type='bible' and @ref]">
+                                    <div>
+                                        <h3 class="fs-4 p-1">Bibelstellen</h3>
+                                        <div class="ps-4">
+                                            <xsl:for-each
+                                                select="distinct-values(.//tei:rs[@type='bible' and @ref]/@ref)">
+                                                <xsl:variable name="biblId">
+                                                    <xsl:value-of select="lower-case(replace(replace(., ',', '-'), ' ', ''))"/>
+                                                </xsl:variable>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        onchange="toggleHighlight(this)"
+                                                        value="{$biblId}" id="check-{$biblId}"/>
+                                                    <label class="form-check-label" for="check-{$biblId}">
+                                                        <xsl:value-of select="."/>
+                                                    </label>
+                                                </div>
+                                            </xsl:for-each>
+                                        </div>
+                                    </div>
+                                </xsl:if>
                                 <xsl:if test=".//tei:list[@xml:id = 'mentioned_letters']">
                                     <div>
                                         <h3 class="fs-4 p-1">Briefe</h3>

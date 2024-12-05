@@ -12,6 +12,16 @@
         </button>
     </xsl:template>
     
+    <xsl:template match="tei:rs[@ref and @type='bible']">
+        <xsl:variable name="biblId">
+            <xsl:value-of select="lower-case(replace(replace(./@ref, ',', '-'), ' ', ''))"/>
+        </xsl:variable>
+        <xsl:variable name="entType" select="@type"/>
+        <span class="{$entType} entity" data-bs-target="{'#'||$biblId}">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
     <xsl:template match="tei:listPerson">
         <xsl:apply-templates/>
     </xsl:template>
