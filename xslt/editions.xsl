@@ -277,4 +277,8 @@
     </xsl:template>
     
     <xsl:template match="tei:list/tei:head"/>
+    
+    <xsl:template match="tei:unclear">
+        <xsl:text>[</xsl:text><xsl:apply-templates/><xsl:text>]</xsl:text>
+    </xsl:template>
 </xsl:stylesheet>
