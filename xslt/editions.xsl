@@ -139,6 +139,39 @@
                             </div>
                             <div class="col-lg-1"/>
                             <div class="col-lg-5">
+                                <div>
+                                    <h2 class="fs-3">Überlieferung</h2>
+                                    <dl>
+                                        <dt>Signatur</dt>
+                                        <dd>
+                                            <xsl:value-of select="string-join(.//tei:msIdentifier/tei:*/text(), ', ')"/>
+                                        </dd>
+                                        
+                                        <dt>Typ</dt>
+                                        <dd><xsl:apply-templates select=".//tei:physDesc"></xsl:apply-templates></dd>
+                                        <dt>Postweg</dt>
+                                        <dd>
+                                            <xsl:choose>
+                                                <xsl:when test=".//tei:correspAction[@type='sent']/tei:placeName/text()">
+                                                    <xsl:value-of select="string-join(.//tei:correspAction[@type='sent']/tei:placeName/text(), '; ')"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    unbekannt
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                            -
+                                            <xsl:choose>
+                                                <xsl:when test=".//tei:correspAction[@type='received']/tei:placeName/text()">
+                                                    <xsl:value-of select="string-join(.//tei:correspAction[@type='received']/tei:placeName/text(), '; ')"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    unbekannt
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </dd>
+                                    </dl>
+                                    <hr />
+                                </div>
                                 <h2 class="visually-hidden">Entitäten</h2>
                                 <xsl:if test=".//tei:back//tei:person[@xml:id]">
                                     <div>
@@ -234,6 +267,7 @@
                                         </div>
                                     </div>
                                 </xsl:if>
+                                
                             </div>
                         </div>
                     </div>
