@@ -14,5 +14,8 @@ python add_correspContext.py
 echo "make corresp_toc.xml"
 python make_corresp_toc.py
 
+echo "make bible_toc.xml"
+python make_bible_toc.py
+
 echo "adding mentioned letters"
 python add_mentioned_letters.py

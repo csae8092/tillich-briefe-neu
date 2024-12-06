@@ -41,7 +41,7 @@ tei_dummy = """
             </availability>
          </publicationStmt>
          <sourceDesc>
-            <p>Automatisch generiert mit "create_corresp_toc.py"</p>
+            <p>Automatisch generiert mit "make_corresp_toc.py"</p>
          </sourceDesc>
       </fileDesc>
    </teiHeader>
