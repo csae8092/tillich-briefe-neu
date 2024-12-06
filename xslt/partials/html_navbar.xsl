@@ -52,6 +52,9 @@
                                     <li>
                                         <a class="dropdown-item" href="listbibl.html">Werke</a>
                                     </li>
+                                    <li>
+                                        <a class="dropdown-item" href="listbible.html">Bibelstellen</a>
+                                    </li>
                                 </ul>
                             </li>
 

@@ -238,7 +238,7 @@
                         </div>
                     </div>
                     <xsl:for-each select="//tei:back">
-                        <div class="tei-back">
+                        <div class="tei-back pt-3">
                             <xsl:apply-templates/>
                         </div>
                     </xsl:for-each>

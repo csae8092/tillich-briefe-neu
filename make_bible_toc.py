@@ -3,19 +3,19 @@ import os
 import lxml.etree as ET
 from collections import defaultdict
 from acdh_tei_pyutils.tei import TeiReader
-from acdh_tei_pyutils.utils import normalize_string
+from acdh_tei_pyutils.utils import normalize_string, extract_fulltext
 
 files = sorted(glob.glob("./data/editions/*.xml"))
 d = defaultdict(list)
 
 
 for x in files:
-    doc_id = os.path.split(x)[-1].replace(".xml", ".html")
+    doc_id = os.path.split(x)[-1]
     doc = TeiReader(x)
     for y in doc.any_xpath(".//tei:rs[@type='bible' and @ref]"):
         ref = y.attrib["ref"].replace(",", "").replace(" ", "").replace("-", "").lower()
         try:
-            text = normalize_string(y.text)
+            text = normalize_string(extract_fulltext(y))
         except AttributeError:
             text = y.attrib["ref"]
         item = {
@@ -31,11 +31,11 @@ tei_dummy = """
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:base="https://tillich-briefe.acdh.oeaw.ac.at" xml:id="bible_toc.xml">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:base="https://tillich-briefe.acdh.oeaw.ac.at" xml:id="listbible.xml">
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Verzeichnis der Korrespondenzen</title>
+                <title>Zitierte Bibelstellen</title>
             </titleStmt>
             <editionStmt>
                 <edition>
@@ -93,4 +93,4 @@ for key, value in d.items():
         notgrpnode.append(notenode)
 
 
-doc.tree_to_file("./data/indices/bible_toc.xml")
+doc.tree_to_file("./data/indices/listbible.xml")
