@@ -270,5 +270,11 @@
         </div>
     </xsl:template>
     
+    <xsl:template match="tei:choice[./tei:abbr and ./tei:expan]">
+    <abbr title="{./tei:expan/text()}">
+        <xsl:apply-templates select="./tei:abbr"/>
+    </abbr>
+    </xsl:template>
+    
     <xsl:template match="tei:list/tei:head"/>
 </xsl:stylesheet>
