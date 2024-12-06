@@ -169,6 +169,22 @@
                                                 </xsl:otherwise>
                                             </xsl:choose>
                                         </dd>
+                                        <xsl:if test=".//tei:ref[@subtype='previous_letter' and @type='withinCorrespondence']">
+                                            <dt>voriger Brief in der Korrespondenz</dt>
+                                            <dd>
+                                                <a href="{replace(.//tei:ref[@subtype='previous_letter' and @type='withinCorrespondence']/@target, '.xml', '.html')}">
+                                                    <xsl:value-of select=".//tei:ref[@subtype='previous_letter' and @type='withinCorrespondence']/text()"/>
+                                                </a>
+                                            </dd>
+                                        </xsl:if>
+                                        <xsl:if test=".//tei:ref[@subtype='next_letter' and @type='withinCorrespondence']">
+                                            <dt>nächster Brief in der Korrespondenz</dt>
+                                            <dd>
+                                                <a href="{replace(.//tei:ref[@subtype='next_letter' and @type='withinCorrespondence']/@target, '.xml', '.html')}">
+                                                    <xsl:value-of select=".//tei:ref[@subtype='next_letter' and @type='withinCorrespondence']/text()"/>
+                                                </a>
+                                            </dd>
+                                        </xsl:if>
                                     </dl>
                                     <hr />
                                 </div>
