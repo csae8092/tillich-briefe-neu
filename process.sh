@@ -19,3 +19,6 @@ python make_bible_toc.py
 
 echo "adding mentioned letters"
 python add_mentioned_letters.py
+
+echo "make calendar data"
+python make_calendar_data.py

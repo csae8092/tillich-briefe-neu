@@ -154,7 +154,6 @@ desktop.ini
 # MacOS
 .DS_Store
 secret.sh
-vendor/
 composer.*
 html/arche.ttl
 hansi.csv
