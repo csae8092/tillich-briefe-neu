@@ -16,15 +16,6 @@ function createCalendar(i18n, events, onEventClick) {
     calendar.setData({ events, currentYear: 1920 });
 
     calendar.addEventListener("calendar-event-click", onEventClick);
-    const senders = new Map()
-    events.forEach(d => {
-        if (d.sender?.link.includes("emt_person")) {
-            senders.set(d.sender.link, d.sender.label)
-        }
-        else if (d.sender.label.includes("erschlossen")) {
-            senders.set(false, d.sender.label)
-        }
-    })
 }
 
 function onEventClick(event) {

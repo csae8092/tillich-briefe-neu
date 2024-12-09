@@ -42,16 +42,16 @@
                     <div class="container pb-4">
                         <h1 class="display-5 text-center"><xsl:value-of select="$doc_title"/></h1>
                     
-                    <acdh-ch-calendar>
-                        <div class="calendar-menu">
-                            <label class="p2 text-center fs-2">
-                                <span>Jahr</span>
-                            </label>
-                            <acdh-ch-calendar-year-picker/>
-                        </div>
-
-                        <acdh-ch-calendar-year data-variant="sparse"></acdh-ch-calendar-year>
-                    </acdh-ch-calendar>
+                        <acdh-ch-calendar>
+                            <div class="calendar-menu">
+                                <label class="p2 text-center fs-2">
+                                    <span>Jahr</span>
+                                </label>
+                                <acdh-ch-calendar-year-picker data-variant="sparse"/>
+                            </div>
+    
+                            <acdh-ch-calendar-year></acdh-ch-calendar-year>
+                        </acdh-ch-calendar>
 
                     <div class="modal fade" id="dataModal" tabindex="-1"
                         aria-labelledby="dataModalLabel" aria-hidden="true">
