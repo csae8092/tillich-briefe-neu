@@ -16,15 +16,13 @@ os.makedirs(out_dir, exist_ok=True)
 reference_date = datetime.strptime("1940-01-01", "%Y-%m-%d")
 
 data = []
-years = set()
 for x in files:
     doc = TeiReader(x)
     link = os.path.split(x)[-1].replace(".xml", ".html")
     start, end = extract_begin_end(doc.any_xpath(".//tei:correspAction[1]/tei:date[1]")[0])
     if start and end and parse(start, default=None) < reference_date:
-        years.add(start[:4])
         item = {
-            "date": f"{parse(start, default=None)}",
+            "date": f"{parse(start, default=None, ignoretz=True)}".split(" ")[0],  # ugly way to remove time
             "label": doc.any_xpath(".//tei:title[1]")[0].text,
             "link": link,
             "kind": "Brief"
