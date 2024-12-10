@@ -29,6 +29,9 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
     </xsl:variable>
+    <xsl:variable name="doc-url">
+        <xsl:value-of select="concat('https://tillich-briefe.acdh.oeaw.ac.at/', $link)"/>
+    </xsl:variable>
 
 
     <xsl:template match="/">
@@ -286,6 +289,37 @@
                                 
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-2"/>
+                            <div class="col-md-8">
+                                <h2 class="text-center">Zitiervorschlag</h2>
+                                <blockquote>
+                                    <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                    <xsl:text>, in: Paul Tillich, Korrespondenz. Digitale Edition, hg. von Christian Danz und Friedrich Wilhelm Graf. </xsl:text>
+                                    <xsl:value-of select="$doc-url"/>
+                                    <xsl:text>, Zugriff am </xsl:text>
+                                    <span class="currentDate">????</span>
+                                    <xsl:text>.</xsl:text>
+                                </blockquote>
+                                <h3 class="text-center">
+                                    Für Belege in der Wikipedia
+                                </h3>
+                                <blockquote>
+                                    <code>
+                                        {{Internetquelle |url=<xsl:value-of select="$doc-url"/>
+                                        <xsl:text> |titel=</xsl:text>
+                                        <xsl:value-of select=".//tei:titleStmt/tei:title[1]"/>
+                                        <xsl:text> |werk=Paul Tillich, Korrespondenz. Digitale Edition. |hrsg=Christian Danz, Friedrich Wilhelm Graf |sprache=de |  datum=</xsl:text>
+                                        <xsl:value-of select="//tei:correspAction[@type = 'sent']/tei:date[@when]"/>
+                                        <xsl:text> |abruf=</xsl:text>
+                                        <span class="currentDateYYYYMMDD">????</span>
+                                        <xsl:text> }}</xsl:text>
+                                    </code>
+                                </blockquote>
+                            </div>
+                            <div class="col-md-2"/>
+                        </div>
+                        
                     </div>
                     <xsl:for-each select="//tei:back">
                         <div class="tei-back pt-3">
