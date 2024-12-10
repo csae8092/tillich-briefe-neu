@@ -292,8 +292,8 @@
                         <div class="row">
                             <div class="col-md-2"/>
                             <div class="col-md-8">
-                                <h2 class="text-center">Zitiervorschlag</h2>
-                                <blockquote>
+                                <h2 class="text-center p-3 fs-3">Zitiervorschlag</h2>
+                                <blockquote class="blockquote">
                                     <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
                                     <xsl:text>, in: Paul Tillich, Korrespondenz. Digitale Edition, hg. von Christian Danz und Friedrich Wilhelm Graf. </xsl:text>
                                     <xsl:value-of select="$doc-url"/>
@@ -301,7 +301,7 @@
                                     <span class="currentDate">????</span>
                                     <xsl:text>.</xsl:text>
                                 </blockquote>
-                                <h3 class="text-center">
+                                <h3 class="text-center p-3 fs-4">
                                     Für Belege in der Wikipedia
                                 </h3>
                                 <blockquote>
