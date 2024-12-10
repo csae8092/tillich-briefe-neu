@@ -54,6 +54,13 @@ try {
     const events = await request("js-data/calendarData.json");
     createCalendar(de, events, onEventClick);
     console.log("Successfully created calendar.");
+    document.querySelectorAll('label').forEach(label => {
+        if (label.querySelector('input[disabled]')) {
+            label.classList.add('visually-hidden');
+        }
+    });
+    
+    
 } catch (error) {
     console.error("Failed to create calendar.\n", String(error));
 }
